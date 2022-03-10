@@ -79,7 +79,11 @@ app.post("/delete", async (req, res) => {
   const checkedItem = req.body.checkbox;
   const listName = req.body.listName;
   await deleteItem(checkedItem, listName);
-  res.redirect("/" + listName);
+  if (listName == "Today") {
+    res.redirect("/");
+  } else {
+    res.redirect("/" + listName);
+  }
 });
 
 app.get("/:listName", async (req, res) => {
@@ -108,12 +112,10 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
 }
-
 
 app.listen(port, function () {
   console.log(`Server started on port ${port}`);
