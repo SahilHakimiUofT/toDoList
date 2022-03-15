@@ -14,7 +14,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin:Test123@cluster0.0e4qu.mongodb.net/todolistDB");
 const defaultItems = [{ name: "soap" }, { name: "loofa" }, { name: "toothbrush" }];
 
 function addDefaultItems() {
